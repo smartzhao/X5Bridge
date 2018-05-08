@@ -9,7 +9,6 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 
 
-import com.tencent.smtt.sdk.WebChromeClient;
 import com.x5bridgelibrary.x5view.X5WebView;
 
 import java.util.ArrayList;
@@ -18,7 +17,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- *  Created by zhaochong on 4/5/18.
+ * Created by zhaochong on 4/5/18.
  */
 @SuppressLint("SetJavaScriptEnabled")
 public class BridgeWebView extends X5WebView implements WebViewJavascriptBridge {
@@ -233,10 +232,6 @@ public class BridgeWebView extends X5WebView implements WebViewJavascriptBridge 
         responseCallbacks.put(BridgeUtil.parseFunctionName(jsUrl), returnCallback);
     }
 
-    public void setX5WebChromeClient(WebChromeClient var1) {
-        this.setWebChromeClient(var1);
-    }
-
     /**
      * register handler,so that javascript can call it
      * 注册处理程序,以便javascript调用它
@@ -264,13 +259,13 @@ public class BridgeWebView extends X5WebView implements WebViewJavascriptBridge 
 
     /**
      * unregister handler
-     *
      */
     public void unregisterAllHandler() {
         if (messageHandlers != null) {
             messageHandlers.clear();
         }
     }
+
     /**
      * call javascript registered handler
      * 调用javascript处理程序注册

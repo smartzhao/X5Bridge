@@ -1,8 +1,12 @@
 package com.x5bridgelibrary.x5view;
 
+import android.app.Activity;
 import android.os.Bundle;
+import android.support.annotation.IdRes;
 import android.view.KeyEvent;
 
+import com.tencent.smtt.sdk.WebChromeClient;
+import com.tencent.smtt.sdk.WebViewClient;
 import com.x5bridgelibrary.X5bridgeManager;
 import com.x5bridgelibrary.jsbridge.BridgeHandler;
 import com.x5bridgelibrary.jsbridge.BridgeWebView;
@@ -16,13 +20,22 @@ import com.x5bridgelibrary.jsbridge.DefaultHandler;
 public class X5Delegate {
     private final String TAG = "X5Delegate";
 
-    private X5Activity x5Activity;
+    private Activity x5Activity;
     private int layoutID;
     private Bundle launchOptions;
     private BridgeWebView webView;
 
+    public BridgeWebView getWebView() {
+        return webView;
+    }
 
-    public X5Delegate(X5Activity x5Activity, int layoutID, Bundle launchOptions) {
+    public X5Delegate(Activity x5Activity, @IdRes
+            int webviewId) {
+        this.x5Activity = x5Activity;
+        this.webView = (BridgeWebView) this.x5Activity.findViewById(webviewId);
+    }
+
+    public X5Delegate(Activity x5Activity, int layoutID, Bundle launchOptions) {
         this.layoutID = layoutID;
         this.x5Activity = x5Activity;
         this.launchOptions = launchOptions;
@@ -30,10 +43,8 @@ public class X5Delegate {
     }
 
     public void onCreate() {
+
         x5Activity.setContentView(layoutID);
-
-        webView = x5Activity.findViewById(launchOptions.getInt("x5webview"));
-
         x5Activity.runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -41,19 +52,16 @@ public class X5Delegate {
             }
         });
 
-//        X5bridgeManager.getInstance().setX5HandlerListener(x5Activity);
-
     }
 
-    public void loadUrl(final String jsUrl, final CallBackFunction returnCallback) {
+    public void loadUrl(final String jsUrl) {
         x5Activity.runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                webView.loadUrl(jsUrl, returnCallback);
+                webView.loadUrl(jsUrl);
             }
         });
     }
-
 
     public void registerHandler(final String handlerName, final BridgeHandler handler) {
 
@@ -89,11 +97,14 @@ public class X5Delegate {
             x5Activity.runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                //    webView.destroy();
+                    //    webView.destroy();
                     webView.unregisterAllHandler();
                 }
             });
         }
+        webView.clearView();
+        x5Activity = null;
+
     }
 
     public boolean onKeyDown(int keyCode, KeyEvent event) {

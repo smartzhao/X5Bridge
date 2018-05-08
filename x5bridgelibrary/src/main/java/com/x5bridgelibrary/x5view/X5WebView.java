@@ -3,17 +3,11 @@ package com.x5bridgelibrary.x5view;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.os.Build;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.TextView;
 
-
-import com.tencent.smtt.export.external.interfaces.IX5WebSettings;
-import com.tencent.smtt.sdk.QbSdk;
 import com.tencent.smtt.sdk.WebSettings;
-import com.tencent.smtt.sdk.WebSettings.LayoutAlgorithm;
 import com.tencent.smtt.sdk.WebView;
 import com.tencent.smtt.sdk.WebViewClient;
 
@@ -58,7 +52,7 @@ public class X5WebView extends WebView {
         webSetting.setJavaScriptEnabled(true);
         webSetting.setJavaScriptCanOpenWindowsAutomatically(true);
         webSetting.setAllowFileAccess(true);
-        webSetting.setLayoutAlgorithm(LayoutAlgorithm.NARROW_COLUMNS);
+        webSetting.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NARROW_COLUMNS);
 //        webSetting.setSupportZoom(true);
 //        webSetting.setBuiltInZoomControls(true);
         /** 禁止缩放*/

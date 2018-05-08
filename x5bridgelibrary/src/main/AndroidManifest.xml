@@ -4,6 +4,7 @@
 
     <application>
         <activity android:name=".x5view.X5Activity"></activity>
+        <service android:name=".services.X5NetService"></service>
     </application>
 
 </manifest>

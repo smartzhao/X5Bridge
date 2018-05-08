@@ -6,6 +6,7 @@ import android.os.Build;
 import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
 import com.tencent.smtt.sdk.WebView;
 import com.tencent.smtt.sdk.WebViewClient;
+import com.x5bridgelibrary.X5bridgeManager;
 import com.x5bridgelibrary.x5view.X5WebView;
 
 import java.io.UnsupportedEncodingException;
@@ -42,9 +43,8 @@ public class BridgeWebViewClient extends WebViewClient {
     }
 
     // 增加shouldOverrideUrlLoading在api》=24时
-    @Override
+ /*   @Override
     public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             String url = request.getUrl().toString();
             try {
@@ -61,20 +61,21 @@ public class BridgeWebViewClient extends WebViewClient {
             } else {
                 return super.shouldOverrideUrlLoading(view, request);
             }
-        }else {
+        } else {
             return super.shouldOverrideUrlLoading(view, request);
         }
-    }
+    }*/
 
     @Override
     public void onPageStarted(WebView view, String url, Bitmap favicon) {
         super.onPageStarted(view, url, favicon);
+        X5bridgeManager.getInstance().getX5EventListener().onPageStarted(url, favicon);
     }
 
     @Override
     public void onPageFinished(WebView view, String url) {
         super.onPageFinished(view, url);
-
+        X5bridgeManager.getInstance().getX5EventListener().onPageFinished(url);
         if (BridgeWebView.toLoadJs != null) {
             BridgeUtil.webViewLoadLocalJs((X5WebView) view, BridgeWebView.toLoadJs);
         }

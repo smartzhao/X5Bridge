@@ -4,7 +4,7 @@ import com.x5bridgelibrary.jsbridge.BridgeHandler;
 import com.x5bridgelibrary.jsbridge.CallBackFunction;
 
 /**
- *  Created by zhaochong on 4/5/18.
+ * Created by zhaochong on 4/5/18.
  */
 public interface X5HandlerListener {
 
@@ -37,8 +37,8 @@ public interface X5HandlerListener {
 
     /**
      * 加载url
+     *
      * @param jsUrl
-     * @param returnCallback
      */
-    void loadUrl(String jsUrl, CallBackFunction returnCallback);
+    void loadUrl(String jsUrl);
 }

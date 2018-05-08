@@ -27,10 +27,10 @@ public class X5Activity extends AppCompatActivity {
     private X5Delegate x5Delegate;
 
     protected X5Activity() {
-        x5Delegate = createPreLoadReactDelegate();
+        x5Delegate = createPreLoadDelegate();
     }
 
-    private X5Delegate createPreLoadReactDelegate() {
+    private X5Delegate createPreLoadDelegate() {
         return new X5Delegate(this, getLayoutID(), getLaunchOptions());
     }
 
@@ -59,7 +59,6 @@ public class X5Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        X5bridgeManager.getInstance().setX5HandlerListener(x5HandlerListener);
         x5Delegate.onCreate();
     }
 
@@ -97,29 +96,6 @@ public class X5Activity extends AppCompatActivity {
         super.onDestroy();
     }
 
-
-    private X5HandlerListener x5HandlerListener = new X5HandlerListener() {
-
-        @Override
-        public void registerHandler(String handlerName, BridgeHandler handler) {
-            x5Delegate.registerHandler(handlerName, handler);
-        }
-
-        @Override
-        public void callHandler(String handlerName, String data, CallBackFunction callBack) {
-            x5Delegate.callHandler(handlerName, data, callBack);
-        }
-
-        @Override
-        public void send(String data) {
-            x5Delegate.send(data);
-        }
-
-        @Override
-        public void loadUrl(String jsUrl, CallBackFunction returnCallback) {
-            x5Delegate.loadUrl(jsUrl, returnCallback);
-        }
-    };
 
 }
 
