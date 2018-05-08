@@ -1,2 +1,3 @@
 # X5Bridge
-x5webview和js交互的三方库
+# RNBridge [![](https://jitpack.io/v/zorozhao/RNBridge.svg)](https://jitpack.io/#zorozhao/RNBridge)
+The library of the bridge between Android native and react native
