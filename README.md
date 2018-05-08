@@ -2,12 +2,13 @@
 # X5Bridge [![](https://jitpack.io/v/zorozhao/X5Bridge.svg)](https://jitpack.io/#zorozhao/X5Bridge)
 The library of the bridge between Android native and react native
 
+## Other communication interactions
+Google native has a set of communication, in fact, it can also complete callback interaction, mainly through interface annotation. But JavaScript needs to define the global method
+![Other communication interactions](https://raw.githubusercontent.com/lzyzsd/JsBridge/master/JsBridge.gif)
 
 ## Usage
 
 ## JitPack.io
-
-I strongly recommend https://jitpack.io
 
 ```groovy
 repositories {
