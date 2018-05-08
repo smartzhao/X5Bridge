@@ -4,7 +4,7 @@ The library of the bridge between Android native and react native
 
 ## Other communication interactions
 Google native has a set of communication, in fact, it can also complete callback interaction, mainly through interface annotation. But JavaScript needs to define the global method
-![Other communication interactions](https://raw.githubusercontent.com/lzyzsd/JsBridge/master/JsBridge.gif)
+![Other communication interactions](https://github.com/zorozhao/X5Bridge/blob/master/js-Native.png)
 
 ## Usage
 
