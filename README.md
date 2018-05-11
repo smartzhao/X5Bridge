@@ -45,7 +45,7 @@ add com.x5bridgelibrary.jsbridge.BridgeWebViewto your layout, it is inherited fr
                 tools:ignore="ProtectedPermissions" />
             <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
-            <!-- 硬件加速对X5视频播放非常重要，建议开启 -->
+            <!-- Hardware acceleration is very important for X5 video playback. -->
             <uses-permission android:name="android.permission.GET_TASKS" />
 
 
